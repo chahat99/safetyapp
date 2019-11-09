@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Why did you feel unsafe?</h1>
+    <form class="" action="{% url 'map:thankyou' %}" method="post">
+      {% csrf_token %}
+
+    {% if reasoning_list %}
+    {% for reason in reasoning_list %}
+    <input type="radio" name="reason" id="reason{{ forloop.counter }}" value="{{ reason.id }}">
+  <label for="reason{{ forloop.counter }}">{{ reason.reason }}</label><br>
+  {% endfor %}
+<input type="submit" value="Submit">
+{% endif %}
+    </form>
+  </body>
+</html>

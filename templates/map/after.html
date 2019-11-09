@@ -68,6 +68,11 @@
         <div class="modal-header">
           <h5 class="modal-title" style="font-size: 24px">Rate the Road</h5>
           <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <form class="" action="{% url 'map:feedback' %}" method="post">
+            {% csrf_token %}
+          <input type="submit" name="submit" value="Submit Your Rating">
+          </form>
+
         </div>
         <div class="modal-body" style="font-size: 20px">
           <p>1 is least safe, 5 is most safe.</p>
@@ -75,11 +80,10 @@
 
 
           <div class="rating-stars-container">
-            <form  method="post">
+            <form action="{% url 'map:rate' %}" method="post">
               {% csrf_token %}
-              {{rating.rate}}
-              <input id="input-1" name="input-1" class="rating rating-loading" value="1" data-min="0" data-max="5" data-step="0.5" data-size="xs">
-            </form>
+              <input type="submit" id="input-1" name="input-1" class="rating rating-loading" value="1" data-min="0" data-max="5" data-step="0.5" data-size="xs">
+          </form>
           </div>
         </div>
       </div>
