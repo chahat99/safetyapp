@@ -5,17 +5,24 @@
     <title></title>
   </head>
   <body>
+    <style>
+    *{
+      font-family: arial;
+    }
+    </style>
+  <div style="box-shadow: 0 0 10px 0 #999;padding: 1em; margin: 1em;border-radius:5px;">
     <h1>Why did you feel unsafe?</h1>
     <form class="" action="{% url 'map:thankyou' %}" method="post">
       {% csrf_token %}
 
     {% if reasoning_list %}
     {% for reason in reasoning_list %}
-    <input type="radio" name="reason" id="reason{{ forloop.counter }}" value="{{ reason.id }}">
-  <label for="reason{{ forloop.counter }}">{{ reason.reason }}</label><br>
-  {% endfor %}
+    <input type="radio" name="reason" id="reason{{ forloop.counter }}" value="{{ reason.id }}" style="margin: 10px 0 10px 0;">
+  <label for="reason{{ forloop.counter }}" >{{ reason.reason }}</label><br>
+  {% endfor %}<br>
 <input type="submit" value="Submit">
 {% endif %}
     </form>
+  </div>
   </body>
 </html>
